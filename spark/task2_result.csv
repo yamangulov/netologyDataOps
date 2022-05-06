@@ -1,11 +1,11 @@
-location,date,max(new_cases)
-Brazil,2021-03-31,90638.0
-Brazil,2021-03-30,84494.0
-India,2021-03-31,72330.0
-United States,2021-03-29,69429.0
-India,2021-03-28,68020.0
-United States,2021-03-31,67039.0
-United States,2021-03-30,61249.0
-France,2021-03-31,59054.0
-India,2021-03-29,56211.0
-India,2021-03-30,53480.0
+date,location,new_cases
+2021-03-31,Brazil,90638.0
+2021-03-31,India,72330.0
+2021-03-29,United States,69429.0
+2021-03-31,France,59054.0
+2021-03-31,Turkey,39302.0
+2021-03-31,Poland,32891.0
+2021-03-31,Germany,25014.0
+2021-03-31,Italy,23887.0
+2021-03-30,Sweden,16427.0
+2021-03-31,Argentina,16056.0
