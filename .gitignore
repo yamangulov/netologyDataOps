@@ -1,1 +1,3 @@
 .idea
+/clickhouse/db/status
+/clickhouse/db/uuid
