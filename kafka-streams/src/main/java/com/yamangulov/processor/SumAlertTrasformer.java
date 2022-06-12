@@ -36,9 +36,9 @@ public class SumAlertTrasformer implements Processor<String, GenericRecord, Stri
         long timestamp = record.timestamp();
         // округляем наш таймстемп вниз до ближайшей минуты - получаем начало окна
         long nearestMinutesTs = timestamp - timestamp % 60_000;
-        String productId = record.value().get("productid").toString();
-        Long quantity = (Long) record.value().get("quantity");
-        Long price = (Long) record.value().get("price");
+        String productId = record.value().get("product_id").toString();
+        Long quantity = (Long) record.value().get("purchase_quantity");
+        Double price = (Double) record.value().get("product_price");
         // создаем ключ в сторе конкатенации начала окна и id продукта
         byte[] stateStoreKey = createKey(nearestMinutesTs, productId);
         Double oldVal = stateStore.get(stateStoreKey);
@@ -69,9 +69,9 @@ public class SumAlertTrasformer implements Processor<String, GenericRecord, Stri
                                         // AVRO допускает использование "логических" типов
                                         // в данном случае мы показываем, что в данном поле лежит таймстемп
                                         // в миллисекундах epoch
-                                        .type(LogicalTypes.timestampMillis().addToSchema(Schema.create(Schema.Type.DOUBLE)))
+                                        .type(LogicalTypes.timestampMillis().addToSchema(Schema.create(Schema.Type.LONG)))
                                         .noDefault()
-                                        .requiredDouble("sum_of_purchases")
+                                        .requiredLong("sum_of_purchases")
                                         .endRecord();
                                 GenericRecord record = new GenericData.Record(schema);
                                 // старт окна у нас в миллисекундах
