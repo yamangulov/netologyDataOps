@@ -73,11 +73,19 @@ temp1 = json_stream.select(col("timestamp"), col("parsed_value.id").alias("id"),
 
 temp1.printSchema()
 
-res = temp1.\
-  join(users, temp1.id == users.id, "left_outer").\
-  select(temp1.timestamp,temp1.id,users.user_name,users.user_age,temp1.action). \
-  writeStream.format("console").option("checkpointLocation", "checkpoint/target").outputMode("append").start()
+temp1_stat = temp1.groupBy("id").count()
+
+# res = temp1.\
+#   join(users, temp1.id == users.id, "left_outer").\
+#   select(temp1.timestamp,temp1.id,users.user_name,users.user_age,temp1.action). \
+#   writeStream.format("console").option("checkpointLocation", "checkpoint/target").outputMode("append").start()
   # writeStream.format("json").option("path", "streaming/target").option("checkpointLocation", "checkpoint/target").outputMode("append").trigger(processingTime='60 seconds').start().awaitTermination(timeout=60)
+
+res = temp1_stat.\
+  join(users, temp1_stat.id == users.id, "left_outer").\
+  select(temp1_stat.id,users.user_name,users.user_age,col("count")). \
+  writeStream.format("console").option("checkpointLocation", "checkpoint/target").outputMode("complete").start()
+
 
 #temp1.writeStream.format("json").option("path", "streaming").option("checkpointLocation", "checkpoint").outputMode("append").trigger(processingTime='10 seconds').start()
 
