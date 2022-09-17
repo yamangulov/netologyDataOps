@@ -1,3 +1,5 @@
 .idea
 /clickhouse/db/status
 /clickhouse/db/uuid
+/clouds/task_6/terraform/.terraform.lock.hcl
+/clouds/task_6/terraform/.terraform/
