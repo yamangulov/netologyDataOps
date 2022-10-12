@@ -1,0 +1,276 @@
+Sending build context to Docker daemon  3.584kB
+Step 1/8 : FROM continuumio/miniconda3:latest
+ ---> ce7d119281a1
+Step 2/8 : RUN mkdir /app
+ ---> Running in 9ef2a3182659
+Removing intermediate container 9ef2a3182659
+ ---> cacc96571d36
+Step 3/8 : WORKDIR /app
+ ---> Running in 5a6ac4b20682
+Removing intermediate container 5a6ac4b20682
+ ---> 76c0042c5a82
+Step 4/8 : COPY 1.sh /app
+ ---> a09ec0830285
+Step 5/8 : RUN chmod +x 1.sh
+ ---> Running in 9b1c8b327dae
+Removing intermediate container 9b1c8b327dae
+ ---> fe1202183dea
+Step 6/8 : RUN conda config --append channels conda-forge
+ ---> Running in d486f30d1f83
+Removing intermediate container d486f30d1f83
+ ---> b339cced2c57
+Step 7/8 : RUN conda install python mlflow boto3 pymysql
+ ---> Running in 3f5f67c5e91e
+Collecting package metadata (current_repodata.json): ...working... done
+Solving environment: ...working... done
+
+## Package Plan ##
+
+  environment location: /opt/conda
+
+  added / updated specs:
+    - boto3
+    - mlflow
+    - pymysql
+    - python
+
+
+The following packages will be downloaded:
+
+    package                    |            build
+    ---------------------------|-----------------
+    alembic-1.7.5              |     pyhd3eb1b0_1         146 KB
+    appdirs-1.4.4              |     pyhd3eb1b0_0          12 KB
+    asn1crypto-1.5.1           |   py39h06a4308_0         163 KB
+    blas-1.0                   |              mkl           6 KB
+    blinker-1.4                |   py39h06a4308_0          23 KB
+    boto3-1.24.28              |   py39h06a4308_0         114 KB
+    botocore-1.27.28           |   py39h06a4308_0         4.6 MB
+    bottleneck-1.3.4           |   py39hce1f21e_0         126 KB
+    ca-certificates-2022.07.19 |       h06a4308_0         124 KB
+    certifi-2022.9.24          |   py39h06a4308_0         154 KB
+    click-8.0.4                |   py39h06a4308_0         152 KB
+    cloudpickle-2.0.0          |     pyhd3eb1b0_0          32 KB
+    conda-22.9.0               |   py39h06a4308_0         884 KB
+    configparser-5.0.2         |     pyhd3eb1b0_0          22 KB
+    databricks-cli-0.17.3      |     pyhd8ed1ab_0          76 KB  conda-forge
+    dataclasses-0.8            |     pyh6d0b6a4_7           8 KB
+    docker-py-4.4.1            |   py39h06a4308_5         191 KB
+    docker-pycreds-0.4.0       |     pyhd3eb1b0_0          12 KB
+    entrypoints-0.4            |   py39h06a4308_0          16 KB
+    flask-2.1.3                |   py39h06a4308_0         130 KB
+    gitdb-4.0.7                |     pyhd3eb1b0_0          50 KB
+    gitpython-3.1.18           |     pyhd3eb1b0_1         125 KB
+    greenlet-1.1.1             |   py39h295c915_0          82 KB
+    gunicorn-20.1.0            |   py39h06a4308_0         122 KB
+    importlib-metadata-4.11.3  |   py39h06a4308_0          40 KB
+    importlib_resources-5.2.0  |     pyhd3eb1b0_1          21 KB
+    intel-openmp-2021.4.0      |    h06a4308_3561         4.2 MB
+    itsdangerous-2.0.1         |     pyhd3eb1b0_0          18 KB
+    jinja2-3.0.3               |     pyhd3eb1b0_0         106 KB
+    jmespath-0.10.0            |     pyhd3eb1b0_0          22 KB
+    libgfortran-ng-7.5.0       |      ha8ba4b0_17          22 KB
+    libgfortran4-7.5.0         |      ha8ba4b0_17         995 KB
+    libprotobuf-3.20.1         |       h4ff587b_0         2.1 MB
+    mako-1.2.3                 |   py39h06a4308_0         125 KB
+    markupsafe-2.1.1           |   py39h7f8727e_0          21 KB
+    mkl-2021.4.0               |     h06a4308_640       142.6 MB
+    mkl-service-2.4.0          |   py39h7f8727e_0          59 KB
+    mkl_fft-1.3.1              |   py39hd3c417c_0         182 KB
+    mkl_random-1.2.2           |   py39h51133e4_0         309 KB
+    mlflow-1.29.0              |   py39ha39b057_0         6.4 MB  conda-forge
+    numexpr-2.8.1              |   py39h6abb31d_0         124 KB
+    numpy-1.21.5               |   py39he7a7128_2          10 KB
+    numpy-base-1.21.5          |   py39hf524024_2         4.9 MB
+    oauthlib-3.2.1             |   py39h06a4308_0         193 KB
+    openssl-1.1.1q             |       h7f8727e_0         2.5 MB
+    packaging-21.3             |     pyhd3eb1b0_0          36 KB
+    pandas-1.4.2               |   py39h295c915_0         9.9 MB
+    prometheus_client-0.14.1   |   py39h06a4308_0          90 KB
+    prometheus_flask_exporter-0.20.3|     pyhd8ed1ab_0          20 KB  conda-forge
+    protobuf-3.20.1            |   py39h295c915_0         293 KB
+    pyjwt-2.4.0                |   py39h06a4308_0          34 KB
+    pymysql-1.0.2              |   py39h06a4308_1          78 KB
+    pyparsing-3.0.9            |   py39h06a4308_0         151 KB
+    python-dateutil-2.8.2      |     pyhd3eb1b0_0         233 KB
+    python_abi-3.9             |           2_cp39           4 KB  conda-forge
+    pytz-2022.1                |   py39h06a4308_0         194 KB
+    pyyaml-6.0                 |   py39h7f8727e_1         173 KB
+    querystring_parser-1.2.4   |             py_0          10 KB  conda-forge
+    s3transfer-0.6.0           |   py39h06a4308_0         105 KB
+    scipy-1.7.3                |   py39hc147768_0        16.9 MB
+    smmap-4.0.0                |     pyhd3eb1b0_0          23 KB
+    sqlalchemy-1.4.32          |   py39h7f8727e_0         1.9 MB
+    sqlparse-0.4.1             |             py_0          35 KB
+    tabulate-0.8.10            |   py39h06a4308_0          45 KB
+    toolz-0.11.2               |     pyhd3eb1b0_0          49 KB
+    typing-extensions-4.3.0    |   py39h06a4308_0           9 KB
+    typing_extensions-4.3.0    |   py39h06a4308_0          42 KB
+    websocket-client-0.58.0    |   py39h06a4308_4          66 KB
+    werkzeug-2.0.3             |     pyhd3eb1b0_0         221 KB
+    zipp-3.8.0                 |   py39h06a4308_0          15 KB
+    ------------------------------------------------------------
+                                           Total:       202.7 MB
+
+The following NEW packages will be INSTALLED:
+
+  alembic            pkgs/main/noarch::alembic-1.7.5-pyhd3eb1b0_1
+  appdirs            pkgs/main/noarch::appdirs-1.4.4-pyhd3eb1b0_0
+  asn1crypto         pkgs/main/linux-64::asn1crypto-1.5.1-py39h06a4308_0
+  blas               pkgs/main/linux-64::blas-1.0-mkl
+  blinker            pkgs/main/linux-64::blinker-1.4-py39h06a4308_0
+  boto3              pkgs/main/linux-64::boto3-1.24.28-py39h06a4308_0
+  botocore           pkgs/main/linux-64::botocore-1.27.28-py39h06a4308_0
+  bottleneck         pkgs/main/linux-64::bottleneck-1.3.4-py39hce1f21e_0
+  click              pkgs/main/linux-64::click-8.0.4-py39h06a4308_0
+  cloudpickle        pkgs/main/noarch::cloudpickle-2.0.0-pyhd3eb1b0_0
+  configparser       pkgs/main/noarch::configparser-5.0.2-pyhd3eb1b0_0
+  databricks-cli     conda-forge/noarch::databricks-cli-0.17.3-pyhd8ed1ab_0
+  dataclasses        pkgs/main/noarch::dataclasses-0.8-pyh6d0b6a4_7
+  docker-py          pkgs/main/linux-64::docker-py-4.4.1-py39h06a4308_5
+  docker-pycreds     pkgs/main/noarch::docker-pycreds-0.4.0-pyhd3eb1b0_0
+  entrypoints        pkgs/main/linux-64::entrypoints-0.4-py39h06a4308_0
+  flask              pkgs/main/linux-64::flask-2.1.3-py39h06a4308_0
+  gitdb              pkgs/main/noarch::gitdb-4.0.7-pyhd3eb1b0_0
+  gitpython          pkgs/main/noarch::gitpython-3.1.18-pyhd3eb1b0_1
+  greenlet           pkgs/main/linux-64::greenlet-1.1.1-py39h295c915_0
+  gunicorn           pkgs/main/linux-64::gunicorn-20.1.0-py39h06a4308_0
+  importlib-metadata pkgs/main/linux-64::importlib-metadata-4.11.3-py39h06a4308_0
+  importlib_resourc~ pkgs/main/noarch::importlib_resources-5.2.0-pyhd3eb1b0_1
+  intel-openmp       pkgs/main/linux-64::intel-openmp-2021.4.0-h06a4308_3561
+  itsdangerous       pkgs/main/noarch::itsdangerous-2.0.1-pyhd3eb1b0_0
+  jinja2             pkgs/main/noarch::jinja2-3.0.3-pyhd3eb1b0_0
+  jmespath           pkgs/main/noarch::jmespath-0.10.0-pyhd3eb1b0_0
+  libgfortran-ng     pkgs/main/linux-64::libgfortran-ng-7.5.0-ha8ba4b0_17
+  libgfortran4       pkgs/main/linux-64::libgfortran4-7.5.0-ha8ba4b0_17
+  libprotobuf        pkgs/main/linux-64::libprotobuf-3.20.1-h4ff587b_0
+  mako               pkgs/main/linux-64::mako-1.2.3-py39h06a4308_0
+  markupsafe         pkgs/main/linux-64::markupsafe-2.1.1-py39h7f8727e_0
+  mkl                pkgs/main/linux-64::mkl-2021.4.0-h06a4308_640
+  mkl-service        pkgs/main/linux-64::mkl-service-2.4.0-py39h7f8727e_0
+  mkl_fft            pkgs/main/linux-64::mkl_fft-1.3.1-py39hd3c417c_0
+  mkl_random         pkgs/main/linux-64::mkl_random-1.2.2-py39h51133e4_0
+  mlflow             conda-forge/linux-64::mlflow-1.29.0-py39ha39b057_0
+  numexpr            pkgs/main/linux-64::numexpr-2.8.1-py39h6abb31d_0
+  numpy              pkgs/main/linux-64::numpy-1.21.5-py39he7a7128_2
+  numpy-base         pkgs/main/linux-64::numpy-base-1.21.5-py39hf524024_2
+  oauthlib           pkgs/main/linux-64::oauthlib-3.2.1-py39h06a4308_0
+  packaging          pkgs/main/noarch::packaging-21.3-pyhd3eb1b0_0
+  pandas             pkgs/main/linux-64::pandas-1.4.2-py39h295c915_0
+  prometheus_client  pkgs/main/linux-64::prometheus_client-0.14.1-py39h06a4308_0
+  prometheus_flask_~ conda-forge/noarch::prometheus_flask_exporter-0.20.3-pyhd8ed1ab_0
+  protobuf           pkgs/main/linux-64::protobuf-3.20.1-py39h295c915_0
+  pyjwt              pkgs/main/linux-64::pyjwt-2.4.0-py39h06a4308_0
+  pymysql            pkgs/main/linux-64::pymysql-1.0.2-py39h06a4308_1
+  pyparsing          pkgs/main/linux-64::pyparsing-3.0.9-py39h06a4308_0
+  python-dateutil    pkgs/main/noarch::python-dateutil-2.8.2-pyhd3eb1b0_0
+  python_abi         conda-forge/linux-64::python_abi-3.9-2_cp39
+  pytz               pkgs/main/linux-64::pytz-2022.1-py39h06a4308_0
+  pyyaml             pkgs/main/linux-64::pyyaml-6.0-py39h7f8727e_1
+  querystring_parser conda-forge/noarch::querystring_parser-1.2.4-py_0
+  s3transfer         pkgs/main/linux-64::s3transfer-0.6.0-py39h06a4308_0
+  scipy              pkgs/main/linux-64::scipy-1.7.3-py39hc147768_0
+  smmap              pkgs/main/noarch::smmap-4.0.0-pyhd3eb1b0_0
+  sqlalchemy         pkgs/main/linux-64::sqlalchemy-1.4.32-py39h7f8727e_0
+  sqlparse           pkgs/main/noarch::sqlparse-0.4.1-py_0
+  tabulate           pkgs/main/linux-64::tabulate-0.8.10-py39h06a4308_0
+  toolz              pkgs/main/noarch::toolz-0.11.2-pyhd3eb1b0_0
+  typing-extensions  pkgs/main/linux-64::typing-extensions-4.3.0-py39h06a4308_0
+  typing_extensions  pkgs/main/linux-64::typing_extensions-4.3.0-py39h06a4308_0
+  websocket-client   pkgs/main/linux-64::websocket-client-0.58.0-py39h06a4308_4
+  werkzeug           pkgs/main/noarch::werkzeug-2.0.3-pyhd3eb1b0_0
+  zipp               pkgs/main/linux-64::zipp-3.8.0-py39h06a4308_0
+
+The following packages will be UPDATED:
+
+  ca-certificates                      2022.3.29-h06a4308_1 --> 2022.07.19-h06a4308_0
+  certifi                          2021.10.8-py39h06a4308_2 --> 2022.9.24-py39h06a4308_0
+  conda                               4.12.0-py39h06a4308_0 --> 22.9.0-py39h06a4308_0
+  openssl                                 1.1.1n-h7f8727e_0 --> 1.1.1q-h7f8727e_0
+
+
+Proceed ([y]/n)? 
+
+Downloading and Extracting Packages
+numpy-base-1.21.5    | 4.9 MB    |            |   0% numpy-base-1.21.5    | 4.9 MB    |            |   0% numpy-base-1.21.5    | 4.9 MB    | ##         |  20% numpy-base-1.21.5    | 4.9 MB    | ####2      |  42% numpy-base-1.21.5    | 4.9 MB    | #######1   |  72% numpy-base-1.21.5    | 4.9 MB    | #########4 |  95% numpy-base-1.21.5    | 4.9 MB    | ########## | 100% 
+pytz-2022.1          | 194 KB    |            |   0% pytz-2022.1          | 194 KB    | ########## | 100% 
+entrypoints-0.4      | 16 KB     |            |   0% entrypoints-0.4      | 16 KB     | ########## | 100% 
+pyyaml-6.0           | 173 KB    |            |   0% pyyaml-6.0           | 173 KB    | ########## | 100% 
+typing-extensions-4. | 9 KB      |            |   0% typing-extensions-4. | 9 KB      | ########## | 100% 
+flask-2.1.3          | 130 KB    |            |   0% flask-2.1.3          | 130 KB    | ########## | 100% 
+importlib_resources- | 21 KB     |            |   0% importlib_resources- | 21 KB     | ########## | 100% 
+libgfortran4-7.5.0   | 995 KB    |            |   0% libgfortran4-7.5.0   | 995 KB    | #######8   |  79% libgfortran4-7.5.0   | 995 KB    | ########## | 100% 
+toolz-0.11.2         | 49 KB     |            |   0% toolz-0.11.2         | 49 KB     | ########## | 100% 
+intel-openmp-2021.4. | 4.2 MB    |            |   0% intel-openmp-2021.4. | 4.2 MB    | ##         |  20% intel-openmp-2021.4. | 4.2 MB    | ####2      |  42% intel-openmp-2021.4. | 4.2 MB    | ######4    |  64% intel-openmp-2021.4. | 4.2 MB    | #########1 |  91% intel-openmp-2021.4. | 4.2 MB    | ########## | 100% 
+docker-py-4.4.1      | 191 KB    |            |   0% docker-py-4.4.1      | 191 KB    | ########## | 100% 
+databricks-cli-0.17. | 76 KB     |            |   0% databricks-cli-0.17. | 76 KB     | ##1        |  21% databricks-cli-0.17. | 76 KB     | ########## | 100% 
+botocore-1.27.28     | 4.6 MB    |            |   0% botocore-1.27.28     | 4.6 MB    | #6         |  16% botocore-1.27.28     | 4.6 MB    | ####6      |  46% botocore-1.27.28     | 4.6 MB    | #######    |  71% botocore-1.27.28     | 4.6 MB    | #########5 |  95% botocore-1.27.28     | 4.6 MB    | ########## | 100% 
+mkl_fft-1.3.1        | 182 KB    |            |   0% mkl_fft-1.3.1        | 182 KB    | ########## | 100% 
+sqlparse-0.4.1       | 35 KB     |            |   0% sqlparse-0.4.1       | 35 KB     | ########## | 100% 
+blinker-1.4          | 23 KB     |            |   0% blinker-1.4          | 23 KB     | ########## | 100% 
+pandas-1.4.2         | 9.9 MB    |            |   0% pandas-1.4.2         | 9.9 MB    | 8          |   9% pandas-1.4.2         | 9.9 MB    | ##         |  20% pandas-1.4.2         | 9.9 MB    | ###        |  31% pandas-1.4.2         | 9.9 MB    | ####2      |  42% pandas-1.4.2         | 9.9 MB    | #####3     |  54% pandas-1.4.2         | 9.9 MB    | ######5    |  65% pandas-1.4.2         | 9.9 MB    | #######6   |  77% pandas-1.4.2         | 9.9 MB    | ########7  |  88% pandas-1.4.2         | 9.9 MB    | #########9 | 100% pandas-1.4.2         | 9.9 MB    | ########## | 100% 
+oauthlib-3.2.1       | 193 KB    |            |   0% oauthlib-3.2.1       | 193 KB    | ########## | 100% 
+itsdangerous-2.0.1   | 18 KB     |            |   0% itsdangerous-2.0.1   | 18 KB     | ########## | 100% 
+numexpr-2.8.1        | 124 KB    |            |   0% numexpr-2.8.1        | 124 KB    | ########## | 100% 
+docker-pycreds-0.4.0 | 12 KB     |            |   0% docker-pycreds-0.4.0 | 12 KB     | ########## | 100% 
+appdirs-1.4.4        | 12 KB     |            |   0% appdirs-1.4.4        | 12 KB     | ########## | 100% 
+importlib-metadata-4 | 40 KB     |            |   0% importlib-metadata-4 | 40 KB     | ########## | 100% 
+typing_extensions-4. | 42 KB     |            |   0% typing_extensions-4. | 42 KB     | ########## | 100% 
+greenlet-1.1.1       | 82 KB     |            |   0% greenlet-1.1.1       | 82 KB     | ########## | 100% 
+conda-22.9.0         | 884 KB    |            |   0% conda-22.9.0         | 884 KB    | ########## | 100% conda-22.9.0         | 884 KB    | ########## | 100% 
+markupsafe-2.1.1     | 21 KB     |            |   0% markupsafe-2.1.1     | 21 KB     | ########## | 100% 
+mkl-2021.4.0         | 142.6 MB  |            |   0% mkl-2021.4.0         | 142.6 MB  |            |   1% mkl-2021.4.0         | 142.6 MB  | 1          |   1% mkl-2021.4.0         | 142.6 MB  | 2          |   2% mkl-2021.4.0         | 142.6 MB  | 2          |   3% mkl-2021.4.0         | 142.6 MB  | 3          |   4% mkl-2021.4.0         | 142.6 MB  | 4          |   4% mkl-2021.4.0         | 142.6 MB  | 5          |   5% mkl-2021.4.0         | 142.6 MB  | 5          |   6% mkl-2021.4.0         | 142.6 MB  | 6          |   7% mkl-2021.4.0         | 142.6 MB  | 7          |   7% mkl-2021.4.0         | 142.6 MB  | 8          |   8% mkl-2021.4.0         | 142.6 MB  | 9          |   9% mkl-2021.4.0         | 142.6 MB  | #          |  10% mkl-2021.4.0         | 142.6 MB  | #          |  11% mkl-2021.4.0         | 142.6 MB  | #1         |  12% mkl-2021.4.0         | 142.6 MB  | #2         |  13% mkl-2021.4.0         | 142.6 MB  | #3         |  13% mkl-2021.4.0         | 142.6 MB  | #4         |  14% mkl-2021.4.0         | 142.6 MB  | #5         |  15% mkl-2021.4.0         | 142.6 MB  | #5         |  16% mkl-2021.4.0         | 142.6 MB  | #6         |  17% mkl-2021.4.0         | 142.6 MB  | #7         |  18% mkl-2021.4.0         | 142.6 MB  | #8         |  18% mkl-2021.4.0         | 142.6 MB  | #9         |  19% mkl-2021.4.0         | 142.6 MB  | #9         |  20% mkl-2021.4.0         | 142.6 MB  | ##         |  21% mkl-2021.4.0         | 142.6 MB  | ##1        |  22% mkl-2021.4.0         | 142.6 MB  | ##2        |  22% mkl-2021.4.0         | 142.6 MB  | ##3        |  23% mkl-2021.4.0         | 142.6 MB  | ##3        |  24% mkl-2021.4.0         | 142.6 MB  | ##4        |  25% mkl-2021.4.0         | 142.6 MB  | ##5        |  26% mkl-2021.4.0         | 142.6 MB  | ##6        |  26% mkl-2021.4.0         | 142.6 MB  | ##7        |  27% mkl-2021.4.0         | 142.6 MB  | ##7        |  28% mkl-2021.4.0         | 142.6 MB  | ##8        |  29% mkl-2021.4.0         | 142.6 MB  | ##9        |  30% mkl-2021.4.0         | 142.6 MB  | ###        |  30% mkl-2021.4.0         | 142.6 MB  | ###1       |  31% mkl-2021.4.0         | 142.6 MB  | ###1       |  32% mkl-2021.4.0         | 142.6 MB  | ###2       |  33% mkl-2021.4.0         | 142.6 MB  | ###3       |  34% mkl-2021.4.0         | 142.6 MB  | ###4       |  34% mkl-2021.4.0         | 142.6 MB  | ###5       |  35% mkl-2021.4.0         | 142.6 MB  | ###5       |  36% mkl-2021.4.0         | 142.6 MB  | ###6       |  37% mkl-2021.4.0         | 142.6 MB  | ###7       |  38% mkl-2021.4.0         | 142.6 MB  | ###8       |  38% mkl-2021.4.0         | 142.6 MB  | ###9       |  39% mkl-2021.4.0         | 142.6 MB  | ###9       |  40% mkl-2021.4.0         | 142.6 MB  | ####       |  41% mkl-2021.4.0         | 142.6 MB  | ####1      |  41% mkl-2021.4.0         | 142.6 MB  | ####2      |  42% mkl-2021.4.0         | 142.6 MB  | ####2      |  43% mkl-2021.4.0         | 142.6 MB  | ####3      |  44% mkl-2021.4.0         | 142.6 MB  | ####4      |  45% mkl-2021.4.0         | 142.6 MB  | ####5      |  45% mkl-2021.4.0         | 142.6 MB  | ####6      |  46% mkl-2021.4.0         | 142.6 MB  | ####6      |  47% mkl-2021.4.0         | 142.6 MB  | ####7      |  48% mkl-2021.4.0         | 142.6 MB  | ####8      |  49% mkl-2021.4.0         | 142.6 MB  | ####9      |  49% mkl-2021.4.0         | 142.6 MB  | #####      |  50% mkl-2021.4.0         | 142.6 MB  | #####      |  51% mkl-2021.4.0         | 142.6 MB  | #####1     |  52% mkl-2021.4.0         | 142.6 MB  | #####2     |  53% mkl-2021.4.0         | 142.6 MB  | #####3     |  53% mkl-2021.4.0         | 142.6 MB  | #####4     |  54% mkl-2021.4.0         | 142.6 MB  | #####4     |  55% mkl-2021.4.0         | 142.6 MB  | #####5     |  56% mkl-2021.4.0         | 142.6 MB  | #####6     |  56% mkl-2021.4.0         | 142.6 MB  | #####7     |  57% mkl-2021.4.0         | 142.6 MB  | #####8     |  58% mkl-2021.4.0         | 142.6 MB  | #####8     |  59% mkl-2021.4.0         | 142.6 MB  | #####9     |  60% mkl-2021.4.0         | 142.6 MB  | ######     |  60% mkl-2021.4.0         | 142.6 MB  | ######1    |  61% mkl-2021.4.0         | 142.6 MB  | ######1    |  62% mkl-2021.4.0         | 142.6 MB  | ######2    |  63% mkl-2021.4.0         | 142.6 MB  | ######3    |  63% mkl-2021.4.0         | 142.6 MB  | ######4    |  64% mkl-2021.4.0         | 142.6 MB  | ######5    |  65% mkl-2021.4.0         | 142.6 MB  | ######5    |  66% mkl-2021.4.0         | 142.6 MB  | ######6    |  67% mkl-2021.4.0         | 142.6 MB  | ######7    |  68% mkl-2021.4.0         | 142.6 MB  | ######8    |  68% mkl-2021.4.0         | 142.6 MB  | ######9    |  69% mkl-2021.4.0         | 142.6 MB  | ######9    |  70% mkl-2021.4.0         | 142.6 MB  | #######    |  71% mkl-2021.4.0         | 142.6 MB  | #######1   |  72% mkl-2021.4.0         | 142.6 MB  | #######2   |  72% mkl-2021.4.0         | 142.6 MB  | #######3   |  73% mkl-2021.4.0         | 142.6 MB  | #######4   |  74% mkl-2021.4.0         | 142.6 MB  | #######4   |  75% mkl-2021.4.0         | 142.6 MB  | #######5   |  76% mkl-2021.4.0         | 142.6 MB  | #######6   |  76% mkl-2021.4.0         | 142.6 MB  | #######7   |  77% mkl-2021.4.0         | 142.6 MB  | #######8   |  78% mkl-2021.4.0         | 142.6 MB  | #######8   |  79% mkl-2021.4.0         | 142.6 MB  | #######9   |  80% mkl-2021.4.0         | 142.6 MB  | ########   |  80% mkl-2021.4.0         | 142.6 MB  | ########1  |  81% mkl-2021.4.0         | 142.6 MB  | ########2  |  82% mkl-2021.4.0         | 142.6 MB  | ########2  |  83% mkl-2021.4.0         | 142.6 MB  | ########3  |  84% mkl-2021.4.0         | 142.6 MB  | ########4  |  84% mkl-2021.4.0         | 142.6 MB  | ########5  |  85% mkl-2021.4.0         | 142.6 MB  | ########5  |  86% mkl-2021.4.0         | 142.6 MB  | ########6  |  87% mkl-2021.4.0         | 142.6 MB  | ########7  |  87% mkl-2021.4.0         | 142.6 MB  | ########8  |  88% mkl-2021.4.0         | 142.6 MB  | ########8  |  89% mkl-2021.4.0         | 142.6 MB  | ########9  |  90% mkl-2021.4.0         | 142.6 MB  | #########  |  90% mkl-2021.4.0         | 142.6 MB  | #########1 |  91% mkl-2021.4.0         | 142.6 MB  | #########1 |  92% mkl-2021.4.0         | 142.6 MB  | #########2 |  93% mkl-2021.4.0         | 142.6 MB  | #########3 |  93% mkl-2021.4.0         | 142.6 MB  | #########4 |  94% mkl-2021.4.0         | 142.6 MB  | #########4 |  95% mkl-2021.4.0         | 142.6 MB  | #########5 |  96% mkl-2021.4.0         | 142.6 MB  | #########6 |  97% mkl-2021.4.0         | 142.6 MB  | #########7 |  97% mkl-2021.4.0         | 142.6 MB  | #########8 |  98% mkl-2021.4.0         | 142.6 MB  | #########8 |  99% mkl-2021.4.0         | 142.6 MB  | #########9 | 100% mkl-2021.4.0         | 142.6 MB  | ########## | 100% 
+openssl-1.1.1q       | 2.5 MB    |            |   0% openssl-1.1.1q       | 2.5 MB    |            |   1% openssl-1.1.1q       | 2.5 MB    | #4         |  15% openssl-1.1.1q       | 2.5 MB    | ###        |  31% openssl-1.1.1q       | 2.5 MB    | ####7      |  47% openssl-1.1.1q       | 2.5 MB    | #######1   |  71% openssl-1.1.1q       | 2.5 MB    | #########7 |  97% openssl-1.1.1q       | 2.5 MB    | ########## | 100% 
+configparser-5.0.2   | 22 KB     |            |   0% configparser-5.0.2   | 22 KB     | ########## | 100% configparser-5.0.2   | 22 KB     | ########## | 100% 
+cloudpickle-2.0.0    | 32 KB     |            |   0% cloudpickle-2.0.0    | 32 KB     | ########## | 100% cloudpickle-2.0.0    | 32 KB     | ########## | 100% 
+s3transfer-0.6.0     | 105 KB    |            |   0% s3transfer-0.6.0     | 105 KB    | ########## | 100% s3transfer-0.6.0     | 105 KB    | ########## | 100% 
+mlflow-1.29.0        | 6.4 MB    |            |   0% mlflow-1.29.0        | 6.4 MB    |            |   0% mlflow-1.29.0        | 6.4 MB    | 6          |   6% mlflow-1.29.0        | 6.4 MB    | ##6        |  26% mlflow-1.29.0        | 6.4 MB    | ###7       |  37% mlflow-1.29.0        | 6.4 MB    | #####6     |  57% mlflow-1.29.0        | 6.4 MB    | #######1   |  71% mlflow-1.29.0        | 6.4 MB    | ########9  |  89% mlflow-1.29.0        | 6.4 MB    | ########## | 100% 
+boto3-1.24.28        | 114 KB    |            |   0% boto3-1.24.28        | 114 KB    | ########## | 100% boto3-1.24.28        | 114 KB    | ########## | 100% 
+pyjwt-2.4.0          | 34 KB     |            |   0% pyjwt-2.4.0          | 34 KB     | ########## | 100% pyjwt-2.4.0          | 34 KB     | ########## | 100% 
+numpy-1.21.5         | 10 KB     |            |   0% numpy-1.21.5         | 10 KB     | ########## | 100% 
+jmespath-0.10.0      | 22 KB     |            |   0% jmespath-0.10.0      | 22 KB     | ########## | 100% jmespath-0.10.0      | 22 KB     | ########## | 100% 
+alembic-1.7.5        | 146 KB    |            |   0% alembic-1.7.5        | 146 KB    | ########## | 100% alembic-1.7.5        | 146 KB    | ########## | 100% 
+python-dateutil-2.8. | 233 KB    |            |   0% python-dateutil-2.8. | 233 KB    | ########## | 100% python-dateutil-2.8. | 233 KB    | ########## | 100% 
+mkl_random-1.2.2     | 309 KB    |            |   0% mkl_random-1.2.2     | 309 KB    | 5          |   5% mkl_random-1.2.2     | 309 KB    | ########## | 100% mkl_random-1.2.2     | 309 KB    | ########## | 100% 
+scipy-1.7.3          | 16.9 MB   |            |   0% scipy-1.7.3          | 16.9 MB   | 4          |   4% scipy-1.7.3          | 16.9 MB   | #          |  11% scipy-1.7.3          | 16.9 MB   | #6         |  17% scipy-1.7.3          | 16.9 MB   | ##4        |  25% scipy-1.7.3          | 16.9 MB   | ###1       |  31% scipy-1.7.3          | 16.9 MB   | ####       |  40% scipy-1.7.3          | 16.9 MB   | ####7      |  47% scipy-1.7.3          | 16.9 MB   | #####3     |  54% scipy-1.7.3          | 16.9 MB   | ######     |  60% scipy-1.7.3          | 16.9 MB   | ######7    |  67% scipy-1.7.3          | 16.9 MB   | #######4   |  74% scipy-1.7.3          | 16.9 MB   | ########1  |  81% scipy-1.7.3          | 16.9 MB   | ########9  |  89% scipy-1.7.3          | 16.9 MB   | #########5 |  96% scipy-1.7.3          | 16.9 MB   | ########## | 100% 
+prometheus_client-0. | 90 KB     |            |   0% prometheus_client-0. | 90 KB     | ########## | 100% 
+smmap-4.0.0          | 23 KB     |            |   0% smmap-4.0.0          | 23 KB     | ########## | 100% 
+pyparsing-3.0.9      | 151 KB    |            |   0% pyparsing-3.0.9      | 151 KB    | ########## | 100% 
+certifi-2022.9.24    | 154 KB    |            |   0% certifi-2022.9.24    | 154 KB    | ########## | 100% 
+zipp-3.8.0           | 15 KB     |            |   0% zipp-3.8.0           | 15 KB     | ########## | 100% 
+jinja2-3.0.3         | 106 KB    |            |   0% jinja2-3.0.3         | 106 KB    | ########## | 100% 
+libgfortran-ng-7.5.0 | 22 KB     |            |   0% libgfortran-ng-7.5.0 | 22 KB     | ########## | 100% 
+gitdb-4.0.7          | 50 KB     |            |   0% gitdb-4.0.7          | 50 KB     | ########## | 100% 
+blas-1.0             | 6 KB      |            |   0% blas-1.0             | 6 KB      | ########## | 100% 
+sqlalchemy-1.4.32    | 1.9 MB    |            |   0% sqlalchemy-1.4.32    | 1.9 MB    | ####2      |  42% sqlalchemy-1.4.32    | 1.9 MB    | #########7 |  97% sqlalchemy-1.4.32    | 1.9 MB    | ########## | 100% 
+mako-1.2.3           | 125 KB    |            |   0% mako-1.2.3           | 125 KB    | ########## | 100% 
+tabulate-0.8.10      | 45 KB     |            |   0% tabulate-0.8.10      | 45 KB     | ########## | 100% 
+packaging-21.3       | 36 KB     |            |   0% packaging-21.3       | 36 KB     | ########## | 100% 
+gunicorn-20.1.0      | 122 KB    |            |   0% gunicorn-20.1.0      | 122 KB    | ########## | 100% 
+libprotobuf-3.20.1   | 2.1 MB    |            |   0% libprotobuf-3.20.1   | 2.1 MB    | ####2      |  43% libprotobuf-3.20.1   | 2.1 MB    | ########## | 100% libprotobuf-3.20.1   | 2.1 MB    | ########## | 100% 
+dataclasses-0.8      | 8 KB      |            |   0% dataclasses-0.8      | 8 KB      | ########## | 100% 
+click-8.0.4          | 152 KB    |            |   0% click-8.0.4          | 152 KB    | ########## | 100% 
+prometheus_flask_exp | 20 KB     |            |   0% prometheus_flask_exp | 20 KB     | ########## | 100% 
+asn1crypto-1.5.1     | 163 KB    |            |   0% asn1crypto-1.5.1     | 163 KB    | ########## | 100% 
+protobuf-3.20.1      | 293 KB    |            |   0% protobuf-3.20.1      | 293 KB    | ########## | 100% 
+mkl-service-2.4.0    | 59 KB     |            |   0% mkl-service-2.4.0    | 59 KB     | ########## | 100% 
+querystring_parser-1 | 10 KB     |            |   0% querystring_parser-1 | 10 KB     | ########## | 100% 
+gitpython-3.1.18     | 125 KB    |            |   0% gitpython-3.1.18     | 125 KB    | ########## | 100% 
+websocket-client-0.5 | 66 KB     |            |   0% websocket-client-0.5 | 66 KB     | ########## | 100% 
+ca-certificates-2022 | 124 KB    |            |   0% ca-certificates-2022 | 124 KB    | ########## | 100% 
+pymysql-1.0.2        | 78 KB     |            |   0% pymysql-1.0.2        | 78 KB     | ########## | 100% 
+python_abi-3.9       | 4 KB      |            |   0% python_abi-3.9       | 4 KB      | ########## | 100% 
+werkzeug-2.0.3       | 221 KB    |            |   0% werkzeug-2.0.3       | 221 KB    | ########## | 100% 
+bottleneck-1.3.4     | 126 KB    |            |   0% bottleneck-1.3.4     | 126 KB    | ########## | 100% 
+Preparing transaction: ...working... done
+Verifying transaction: ...working... done
+Executing transaction: ...working... done
+Removing intermediate container 3f5f67c5e91e
+ ---> 103894bf94b3
+Step 8/8 : RUN bash 1.sh
+ ---> Running in 93eb131df9d6
+Hello Netology
+Removing intermediate container 93eb131df9d6
+ ---> 7f6dbfaaec23
+Successfully built 7f6dbfaaec23
+Successfully tagged netology-ml:netology-ml
