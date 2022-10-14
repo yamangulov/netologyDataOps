@@ -1,0 +1,40 @@
+Using /media/stranger/repo/netologyDataOps/devops-mlops/task_3/ansible.cfg as config file
+
+PLAY [netology-ml] *************************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [node01]
+ok: [node02]
+
+TASK [Task ping] ***************************************************************
+ok: [node01] => {"changed": false, "ping": "pong"}
+ok: [node02] => {"changed": false, "ping": "pong"}
+
+TASK [Update apt cache] ********************************************************
+changed: [node01] => {"cache_update_time": 1665772680, "cache_updated": true, "changed": true}
+changed: [node02] => {"cache_update_time": 1665772680, "cache_updated": true, "changed": true}
+
+TASK [Install packages with apt] ***********************************************
+ok: [node01] => {"cache_update_time": 1665772680, "cache_updated": false, "changed": false}
+ok: [node02] => {"cache_update_time": 1665772680, "cache_updated": false, "changed": false}
+
+TASK [Copy file] ***************************************************************
+changed: [node01] => {"changed": true, "checksum": "13f59ca81ca01c147b6c425183bbd058e680331f", "dest": "/home/ansible/test.txt", "gid": 0, "group": "root", "md5sum": "edc900745c5d15d773fbcdc0b376f00c", "mode": "0777", "owner": "root", "size": 9, "src": "/home/ansible/.ansible/tmp/ansible-tmp-1665772682.609485-1417785-118166115133927/source", "state": "file", "uid": 0}
+changed: [node02] => {"changed": true, "checksum": "13f59ca81ca01c147b6c425183bbd058e680331f", "dest": "/home/ansible/test.txt", "gid": 0, "group": "root", "md5sum": "edc900745c5d15d773fbcdc0b376f00c", "mode": "0777", "owner": "root", "size": 9, "src": "/home/ansible/.ansible/tmp/ansible-tmp-1665772682.6179862-1417789-209896778163476/source", "state": "file", "uid": 0}
+
+TASK [Create groups] ***********************************************************
+ok: [node02] => (item=devops_1) => {"ansible_loop_var": "item", "changed": false, "gid": 1002, "item": "devops_1", "name": "devops_1", "state": "present", "system": false}
+ok: [node01] => (item=devops_1) => {"ansible_loop_var": "item", "changed": false, "gid": 1002, "item": "devops_1", "name": "devops_1", "state": "present", "system": false}
+ok: [node01] => (item=test_1) => {"ansible_loop_var": "item", "changed": false, "gid": 1003, "item": "test_1", "name": "test_1", "state": "present", "system": false}
+ok: [node02] => (item=test_1) => {"ansible_loop_var": "item", "changed": false, "gid": 1003, "item": "test_1", "name": "test_1", "state": "present", "system": false}
+
+TASK [Create users] ************************************************************
+ok: [node02] => (item={'user_name': 'devops_1', 'home_dir': 'devops_1'}) => {"ansible_loop_var": "item", "append": false, "changed": false, "comment": "", "group": 100, "groups": "devops_1, test_1", "home": "/home/devops_1", "item": {"home_dir": "devops_1", "user_name": "devops_1"}, "move_home": false, "name": "devops_1", "shell": "/bin/bash", "state": "present", "uid": 1001}
+ok: [node01] => (item={'user_name': 'devops_1', 'home_dir': 'devops_1'}) => {"ansible_loop_var": "item", "append": false, "changed": false, "comment": "", "group": 100, "groups": "devops_1, test_1", "home": "/home/devops_1", "item": {"home_dir": "devops_1", "user_name": "devops_1"}, "move_home": false, "name": "devops_1", "shell": "/bin/bash", "state": "present", "uid": 1001}
+ok: [node01] => (item={'user_name': 'test_1', 'home_dir': 'test_1'}) => {"ansible_loop_var": "item", "append": false, "changed": false, "comment": "", "group": 100, "groups": "devops_1, test_1", "home": "/home/test_1", "item": {"home_dir": "test_1", "user_name": "test_1"}, "move_home": false, "name": "test_1", "shell": "/bin/bash", "state": "present", "uid": 1002}
+ok: [node02] => (item={'user_name': 'test_1', 'home_dir': 'test_1'}) => {"ansible_loop_var": "item", "append": false, "changed": false, "comment": "", "group": 100, "groups": "devops_1, test_1", "home": "/home/test_1", "item": {"home_dir": "test_1", "user_name": "test_1"}, "move_home": false, "name": "test_1", "shell": "/bin/bash", "state": "present", "uid": 1002}
+
+PLAY RECAP *********************************************************************
+node01                     : ok=7    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+node02                     : ok=7    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
