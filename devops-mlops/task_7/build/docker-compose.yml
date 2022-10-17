@@ -1,0 +1,13 @@
+version: '3.9'
+services:
+  torchserve:
+    build: .
+    ports:
+      - "8080:8080" #REST API
+      - "8081:8081"
+      - "8082:8082"
+      - "7071:7071" # gPRC API
+      - "7070:7070"
+    ulimits:
+      memlock: -1
+      stack: 67108864
